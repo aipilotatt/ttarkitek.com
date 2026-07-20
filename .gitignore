@@ -1,0 +1,24 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs & temp
+*.log
+tmp/
+temp/
+
+# Dependencies (future-proofing — not used yet)
+node_modules/
+
+# Local env / secrets (in case a form backend is added later)
+.env
+.env.local
