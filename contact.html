@@ -18,12 +18,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="index.html" aria-label="Arkitek Tan & Tan — home">
-        <svg class="brand__mark" viewBox="0 0 104 100" aria-hidden="true">
-          <line x1="54" y1="6" x2="26" y2="92" stroke-width="4" />
-          <polygon class="mark-fill" points="64,16 34,92 58,92" />
-          <line x1="68" y1="22" x2="94" y2="92" stroke-width="4" />
-          <line x1="94" y1="92" x2="78" y2="92" stroke-width="4" />
-        </svg>
+        <img class="brand__mark" src="assets/img/logo-mark.png" alt="" />
         <span class="brand__text">
           <span class="brand__name">Arkitek Tan &amp; Tan</span>
           <span class="brand__sub">Sdn Bhd</span>
@@ -36,6 +31,7 @@
         <a href="projects.html">Projects</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
+        <a href="careers.html">Careers</a>
         <a href="contact.html" aria-current="page">Contact</a>
       </nav>
     </div>
@@ -65,7 +61,14 @@
             </div>
             <div class="contact-item">
               <div class="contact-item__label">Studio</div>
-              <div class="contact-item__value" style="font-size:1.05rem;">Malaysia · address to follow</div>
+              <div class="contact-item__value" style="font-size:1.05rem;line-height:1.5;">
+                11-2 &amp; 11-3, Jalan PJU 5/11, Dataran Sunway,<br />
+                Kota Damansara, 47810 Petaling Jaya,<br />
+                Selangor Darul Ehsan, Malaysia
+              </div>
+              <p style="margin-top:.7rem;">
+                <a class="link-arrow" href="https://www.google.com/maps/search/?api=1&amp;query=11-2%20%26%2011-3%2C%20Jalan%20PJU%205%2F11%2C%20Dataran%20Sunway%2C%20Kota%20Damansara%2C%2047810%20Petaling%20Jaya%2C%20Selangor" target="_blank" rel="noopener">View on map <span>→</span></a>
+              </p>
             </div>
           </div>
           <p class="form-note">Prefer to email directly? That always reaches us fastest.</p>
@@ -73,7 +76,11 @@
 
         <div class="reveal">
           <p class="eyebrow">Or send a note</p>
-          <form data-contact-form style="margin-top:1.4rem;" novalidate>
+          <form data-form action="https://api.web3forms.com/submit" method="POST" style="margin-top:1.4rem;" novalidate>
+            <input type="hidden" name="access_key" value="f441e8cb-0e9d-4e1f-9c5c-c89a638a3567" />
+            <input type="hidden" name="subject" value="New enquiry from ttarkitek.com" />
+            <input type="hidden" name="from_name" value="Arkitek Tan &amp; Tan website" />
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <div class="field">
               <label for="name">Your name</label>
               <input id="name" name="name" type="text" autocomplete="name" required />
@@ -111,12 +118,7 @@
       <div class="footer-grid">
         <div class="footer-col footer-col--wide">
           <a class="brand" href="index.html" aria-label="Arkitek Tan & Tan — home">
-            <svg class="brand__mark" viewBox="0 0 104 100" aria-hidden="true">
-              <line x1="54" y1="6" x2="26" y2="92" stroke-width="4" />
-              <polygon class="mark-fill" points="64,16 34,92 58,92" />
-              <line x1="68" y1="22" x2="94" y2="92" stroke-width="4" />
-              <line x1="94" y1="92" x2="78" y2="92" stroke-width="4" />
-            </svg>
+            <img class="brand__mark" src="assets/img/logo-mark.png" alt="" />
             <span class="brand__text">
               <span class="brand__name">Arkitek Tan &amp; Tan</span>
               <span class="brand__sub">Sdn Bhd</span>
@@ -131,6 +133,7 @@
             <li><a href="projects.html">Projects</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
+            <li><a href="careers.html">Careers</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
@@ -139,6 +142,7 @@
           <ul>
             <li><a href="mailto:ttarkitek@gmail.com">ttarkitek@gmail.com</a></li>
             <li><a href="tel:+60350203999">+603 5020 3999</a></li>
+            <li style="line-height:1.5;margin-top:.3rem;">11-2 &amp; 11-3, Jalan PJU 5/11,<br />Dataran Sunway, Kota Damansara,<br />47810 Petaling Jaya, Selangor</li>
           </ul>
         </div>
       </div>

@@ -2,7 +2,7 @@ $ErrorActionPreference = 'Stop'
 # Static file server for the Arkitek Tan & Tan website.
 # Serves the project root (parent of this .claude folder) over HTTP.
 $root = Split-Path -Parent $PSScriptRoot
-$port = 8777
+$port = 8090
 $prefix = "http://localhost:$port/"
 
 $listener = New-Object System.Net.HttpListener

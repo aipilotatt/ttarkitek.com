@@ -5,7 +5,7 @@
       "name": "arkitek-website",
       "runtimeExecutable": "powershell",
       "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "D:/Downloads/arkitek-tan-tan/.claude/serve.ps1"],
-      "port": 8777
+      "port": 8090
     }
   ]
 }

@@ -22,3 +22,7 @@ node_modules/
 # Local env / secrets (in case a form backend is added later)
 .env
 .env.local
+
+# local preview drafts (not part of the site)
+preview-motion.html
+preview-artifact.html

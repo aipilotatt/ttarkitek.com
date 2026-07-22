@@ -148,8 +148,7 @@ h3 { font-size: var(--fs-h3); }
 /* over the dark hero */
 .site-header--over { background: transparent; }
 .site-header--over .brand__name, .site-header--over .brand__sub { color: var(--paper); }
-.site-header--over .brand__mark line { stroke: var(--paper); }
-.site-header--over .brand__mark .mark-fill { fill: var(--paper); }
+.site-header--over .brand__mark { filter: brightness(0) invert(1); }
 .site-header--over .nav a { color: rgba(247,245,241,0.86); }
 .site-header--over .nav-toggle span { background: var(--paper); }
 
@@ -161,8 +160,7 @@ h3 { font-size: var(--fs-h3); }
 }
 .site-header.is-stuck .brand__name { color: var(--ink); }
 .site-header.is-stuck .brand__sub { color: var(--muted); }
-.site-header.is-stuck .brand__mark line { stroke: var(--ink); }
-.site-header.is-stuck .brand__mark .mark-fill { fill: var(--ink); }
+.site-header.is-stuck .brand__mark { filter: none; }
 .site-header.is-stuck .nav a { color: var(--ink); }
 .site-header.is-stuck .nav-toggle span { background: var(--ink); }
 
@@ -174,9 +172,8 @@ h3 { font-size: var(--fs-h3); }
 .site-header.is-stuck .header-inner { padding-block: 0.75rem; }
 
 .brand { display: inline-flex; align-items: center; gap: 0.75rem; }
-.brand__mark { width: 36px; height: 36px; flex: none; }
-.brand__mark line { stroke: var(--ink); transition: stroke 0.45s var(--ease); }
-.brand__mark .mark-fill { fill: var(--ink); transition: fill 0.45s var(--ease); }
+/* real logo artwork — colour-adapts via filter */
+.brand__mark { width: 34px; height: auto; flex: none; display: block; transition: filter 0.45s var(--ease); }
 .brand__text { display: flex; flex-direction: column; line-height: 1; }
 .brand__name {
   font-family: var(--font-display); font-weight: 500;
@@ -572,8 +569,7 @@ h3 { font-size: var(--fs-h3); }
   padding-bottom: 3rem;
   border-bottom: 1px solid rgba(247,245,241,0.16);
 }
-.site-footer .brand__mark line { stroke: var(--paper); }
-.site-footer .brand__mark .mark-fill { fill: var(--paper); }
+.site-footer .brand__mark { filter: brightness(0) invert(1); }
 .site-footer .brand__name { color: var(--paper); }
 .site-footer .brand__sub { color: rgba(247,245,241,0.5); }
 .footer-tagline {
@@ -651,8 +647,44 @@ h3 { font-size: var(--fs-h3); }
   .footer-grid { grid-template-columns: 1fr; }
 }
 
+/* ---- Motion: cursor-reactive warmth on dark areas ----------------------- */
+.hero, .site-footer, .values { position: relative; overflow: hidden; }
+.glow {
+  position: absolute; width: 60vmax; height: 60vmax; left: 0; top: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none; opacity: 0; z-index: 1;
+  transition: opacity 0.5s var(--ease);
+  background: radial-gradient(circle, rgba(168,124,90,0.20), rgba(168,124,90,0) 60%);
+  mix-blend-mode: screen;
+}
+.hero__inner, .site-footer .wrap, .values .wrap { position: relative; z-index: 2; }
+.hero__slides { will-change: transform; }
+
+/* ---- Motion: curtain image reveal + settle ------------------------------ */
+.rv { clip-path: inset(100% 0 0 0); transition: clip-path 0.8s var(--ease); transition-delay: calc(var(--i, 0) * 55ms); }
+.rv.is-in { clip-path: inset(0 0 0 0); }
+/* the tonal placeholder / photo settles from a slight zoom */
+.project__media.rv::before, .feature-strip.rv::before,
+.project__media.rv img, .feature-strip.rv img {
+  transform: scale(1.06);
+  transition: transform 0.95s var(--ease);
+  transition-delay: calc(var(--i, 0) * 55ms);
+}
+.project__media.rv.is-in::before, .feature-strip.rv.is-in::before,
+.project__media.rv.is-in img, .feature-strip.rv.is-in img { transform: scale(1); }
+/* hover zoom still applies once revealed */
+.project:hover .project__media.is-in img { transform: scale(1.045); }
+
+/* ---- Forms: honeypot + status ------------------------------------------ */
+.hp { position: absolute !important; left: -9999px !important; opacity: 0 !important; pointer-events: none; }
+button[type="submit"][disabled] { opacity: 0.6; cursor: progress; }
+
 /* ---- Reduced motion ----------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
+  .rv { clip-path: none !important; }
+  .project__media.rv::before, .feature-strip.rv::before,
+  .project__media.rv img, .feature-strip.rv img { transform: none !important; }
+  .glow { display: none !important; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .reveal { opacity: 1; transform: none; }
