@@ -1,0 +1,22 @@
+# Cloudflare Pages cache rules.
+#
+# NOTE: our asset filenames are NOT content-hashed (styles.css, main.js stay
+# the same name on every deploy). So they must NEVER be cached as "immutable"
+# — that would make updates invisible to returning visitors for up to a year.
+# CSS/JS revalidate on every request (cheap: usually a 304), images are safe
+# to cache for a week since new photos arrive under new filenames.
+
+/assets/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/img/*
+  Cache-Control: public, max-age=604800
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
